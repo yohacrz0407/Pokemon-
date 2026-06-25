@@ -2,10 +2,10 @@
 #include <string>
 
 using namespace std;
-int menuPrincipal();
-void seleccionarEquipos();
-void combate();
-int seleccionarPokemonVivo(int jugador, int vivos[]);
+int menuPrincipal();                                  // Función para mostrar el menú principal y obtener la opción del usuario
+void seleccionarEquipos();                            // Función para que los jugadores seleccionen sus equipos de Pokémon
+void combate();                                       // Función para manejar el combate entre los Pokémon seleccionados
+int seleccionarPokemonVivo(int jugador, int vivos[]); // Función para seleccionar un Pokémon vivo del equipo del jugador
 string ataque1[10] = {
     "Impactrueno",
     "Lanzallamas",
@@ -65,7 +65,6 @@ string pokemon[10] = {
     "Greninja"};
 
 string nombre[2];
-
 int equipo[2][3];
 
 int vidaBase[10] = {
@@ -108,15 +107,11 @@ int main()
             break;
 
         case 2:
-            cout << "\nModo torneo en desarrollo\n";
-            break;
-
-        case 3:
             cout << "\nGracias por jugar\n";
             break;
         }
 
-    } while (opcion != 3);
+    } while (opcion != 2);
 
     return 0;
 }
@@ -131,17 +126,22 @@ int menuPrincipal()
         cout << "\n   POKEMON GAME";
         cout << "\n====================";
         cout << "\n1. Modo Versus";
-        cout << "\n2. Modo Torneo";
-        cout << "\n3. Salir";
+        cout << "\n2. Salir";
         cout << "\nOpcion: ";
         cin >> opcion;
 
-    } while (opcion < 1 || opcion > 3);
+    } while (opcion < 1 || opcion > 2);
 
     return opcion;
 }
 
-for (int jugador = 0; jugador < 2; jugador++) // bucle para que ambos jugadores seleccionen sus equipos
+void seleccionarEquipos()
+{
+    char respuesta;
+
+    do
+    {
+        for (int jugador = 0; jugador < 2; jugador++) // bucle para que ambos jugadores seleccionen sus equipos
         {
             cout << "\nIngrese el nombre del Jugador "
                  << jugador + 1 << ": ";
@@ -213,14 +213,6 @@ for (int jugador = 0; jugador < 2; jugador++) // bucle para que ambos jugadores 
             }
         }
 
-                } while (equipo[jugador][i] < 1 ||
-                         equipo[jugador][i] > 10 ||
-                         repetido);
-
-                equipo[jugador][i]--;
-            }
-        }
-
         cout << "\n========================";
         cout << "\nEquipos Seleccionados";
         cout << "\n========================\n";
@@ -246,6 +238,8 @@ for (int jugador = 0; jugador < 2; jugador++) // bucle para que ambos jugadores 
 
     cout << "\nComenzando combate...\n";
 }
+
+
 
 int seleccionarPokemonVivo(int jugador, int vivos[])
 {
@@ -300,6 +294,7 @@ void combate()
 
     while (derrotadosJ1 < 3 && derrotadosJ2 < 3)
     {
+      
         int ataqueElegido;
         int dano;
 
@@ -354,7 +349,7 @@ void combate()
             dano = 1;
         }
 
-        vida2 -= dano;
+        vida2 = vida2 - dano;
 
         if (vida2 < 0)
         {
@@ -364,7 +359,8 @@ void combate()
         cout << "\n"
              << pokemon[indice1]
              << " uso "
-             << (ataqueElegido == 1 ? ataque1[indice1] : ataqueElegido == 2 ? ataque2[indice1]: ataque3[indice1])
+             << (ataqueElegido == 1 ? ataque1[indice1] : ataqueElegido == 2 ? ataque2[indice1]
+                                                                            : ataque3[indice1])
              << " e hizo "
              << dano
              << " de dano";
@@ -387,15 +383,13 @@ void combate()
             if (derrotadosJ2 == 3)
                 break;
 
-            pokeJ2 = seleccionarPokemonVivo(1, vivosJ2);
+            pokeJ2 = seleccionarPokemonVivo(1, vivosJ2); // Selecciona un nuevo Pokémon vivo para el jugador 2
 
-            indice2 = equipo[1][pokeJ2];
-            vida2 = vidaBase[indice2];
+            indice2 = equipo[1][pokeJ2]; // Actualiza el índice del nuevo Pokémon seleccionado
+            vida2 = vidaBase[indice2];   // Actualiza la vida del nuevo Pokémon seleccionado
         }
 
-        cout << "\n--------------------";
-        cout << "\nTurno de "
-             << nombre[1];
+    
 
         cout << "\n"
              << pokemon[indice1]
@@ -447,7 +441,7 @@ void combate()
             dano = 1;
         }
 
-        vida1 -= dano;
+        vida1 = vida1 - dano;
 
         if (vida1 < 0)
             vida1 = 0;
