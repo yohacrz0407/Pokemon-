@@ -294,7 +294,7 @@ void combate()
 
     while (derrotadosJ1 < 3 && derrotadosJ2 < 3)
     {
-      
+       
         int ataqueElegido;
         int dano;
 
@@ -389,7 +389,6 @@ void combate()
             vida2 = vidaBase[indice2];   // Actualiza la vida del nuevo Pokémon seleccionado
         }
 
-    
 
         cout << "\n"
              << pokemon[indice1]
