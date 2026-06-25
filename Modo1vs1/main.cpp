@@ -141,13 +141,7 @@ int menuPrincipal()
     return opcion;
 }
 
-void seleccionarEquipos()
-{
-    char respuesta;
-
-    do
-    {
-        for (int jugador = 0; jugador < 2; jugador++)
+for (int jugador = 0; jugador < 2; jugador++) // bucle para que ambos jugadores seleccionen sus equipos
         {
             cout << "\nIngrese el nombre del Jugador "
                  << jugador + 1 << ": ";
@@ -184,34 +178,40 @@ void seleccionarEquipos()
                     cout << "Pokemon " << i + 1 << " (1-10): ";
                     cin >> equipo[jugador][i];
 
-                    if (equipo[jugador][i] < 1 ||
-                        equipo[jugador][i] > 10)
+                    if (equipo[jugador][i] < 1 || equipo[jugador][i] > 10)
                     {
                         cout << "\nPokemon invalido.\n";
                         continue;
                     }
 
-                  for (int j = 0; j < i; j++)
-{
-    if (equipo[jugador][i] == equipo[jugador][j])
-    {
-        repetido = true;
-        cout << "\nEse Pokemon ya fue seleccionado en tu equipo.\n";
-    }
-}
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (equipo[jugador][i] == equipo[jugador][j])
+                        {
+                            repetido = true;
+                            cout << "\nEse Pokemon ya fue seleccionado en tu equipo.\n";
+                        }
+                    }
 
-// Verificar que no lo haya escogido el otro jugador
-if (jugador == 1)
-{
-    for (int j = 0; j < 3; j++)
-    {
-        if (equipo[1][i] == equipo[0][j] + 1)
-        {
-            repetido = true;
-            cout << "\nEse Pokemon ya fue seleccionado por el Jugador 1.\n";
+                    // Verificar que no lo haya escogido el otro jugador
+                    if (jugador == 1)
+                    {
+                        for (int j = 0; j < 3; j++)
+                        {
+                            if (equipo[1][i] - 1 == equipo[0][j])
+                            {
+                                repetido = true;
+                                cout << "\nEse Pokemon ya fue seleccionado por el Jugador 1.\n";
+                                break;
+                            }
+                        }
+                    }
+
+                } while (equipo[jugador][i] < 1 || equipo[jugador][i] > 10 || repetido);
+
+                equipo[jugador][i]--;
+            }
         }
-    }
-}
 
                 } while (equipo[jugador][i] < 1 ||
                          equipo[jugador][i] > 10 ||
