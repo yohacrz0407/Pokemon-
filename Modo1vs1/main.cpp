@@ -294,7 +294,13 @@ void combate()
 
     while (derrotadosJ1 < 3 && derrotadosJ2 < 3)
     {
-       
+        cout << "\n===================================";
+        cout << "\nEs el turno de " << nombre[0];
+        cout << "\nPresione ENTER para continuar...";
+        cout << "\n===================================\n";
+
+        cin.ignore();
+        cin.get();
         int ataqueElegido;
         int dano;
 
@@ -389,6 +395,13 @@ void combate()
             vida2 = vidaBase[indice2];   // Actualiza la vida del nuevo Pokémon seleccionado
         }
 
+        cout << "\n===================================";
+        cout << "\nEs el turno de " << nombre[1];
+        cout << "\nPresione ENTER para continuar...";
+        cout << "\n===================================\n";
+
+        cin.ignore();
+        cin.get();
 
         cout << "\n"
              << pokemon[indice1]
