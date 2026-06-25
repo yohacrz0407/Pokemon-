@@ -191,15 +191,27 @@ void seleccionarEquipos()
                         continue;
                     }
 
-                    for (int j = 0; j < i; j++)
-                    {
-                        if (equipo[jugador][i] ==
-                            equipo[jugador][j])
-                        {
-                            repetido = true;
-                            cout << "\nEse Pokemon ya fue seleccionado.\n";
-                        }
-                    }
+                  for (int j = 0; j < i; j++)
+{
+    if (equipo[jugador][i] == equipo[jugador][j])
+    {
+        repetido = true;
+        cout << "\nEse Pokemon ya fue seleccionado en tu equipo.\n";
+    }
+}
+
+// Verificar que no lo haya escogido el otro jugador
+if (jugador == 1)
+{
+    for (int j = 0; j < 3; j++)
+    {
+        if (equipo[1][i] == equipo[0][j] + 1)
+        {
+            repetido = true;
+            cout << "\nEse Pokemon ya fue seleccionado por el Jugador 1.\n";
+        }
+    }
+}
 
                 } while (equipo[jugador][i] < 1 ||
                          equipo[jugador][i] > 10 ||
