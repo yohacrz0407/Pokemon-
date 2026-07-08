@@ -141,6 +141,11 @@ int seleccionarPokemonVivo(int jugador, int vivos[])
         cout << "\nSeleccione Pokemon: ";
         cin >> opcion;
 
+        if (opcion < 1 || opcion > cantidad)
+        {
+            cout << "\nOpcion invalida. Seleccione un Pokemon disponible.\n";
+        }
+
     } while (opcion < 1 || opcion > cantidad);
 
     return disponibles[opcion - 1];
