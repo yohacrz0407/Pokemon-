@@ -239,8 +239,6 @@ void seleccionarEquipos()
     cout << "\nComenzando combate...\n";
 }
 
-
-
 int seleccionarPokemonVivo(int jugador, int vivos[])
 {
     int opcion;
