@@ -116,6 +116,10 @@ int seleccionarPokemonVivo(int jugador, int vivos[])
     int disponibles[3];
     int cantidad = 0;
 
+    cout << "\n============================";
+    cout << "\nTurno de " << nombre[jugador];
+    cout << "\nSeleccione el Pokemon para iniciar la batalla";
+    cout << "\n============================";
     cout << "\nPokemon disponibles:\n";
 
     for (int i = 0; i < 3; i++)
