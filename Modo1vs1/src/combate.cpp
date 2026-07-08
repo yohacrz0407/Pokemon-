@@ -62,6 +62,11 @@ void combate()
             cout << "\nSeleccione: ";
             cin >> ataqueElegido;
 
+            if (ataqueElegido < 1 || ataqueElegido > 3)
+            {
+                cout << "\nOpcion invalida. Solo es valido un numero del 1 al 3.\n";
+            }
+
         } while (ataqueElegido < 1 || ataqueElegido > 3);
 
         switch (ataqueElegido)
@@ -159,6 +164,11 @@ void combate()
         {
             cout << "\nSeleccione: ";
             cin >> ataqueElegido;
+
+            if (ataqueElegido < 1 || ataqueElegido > 3)
+            {
+                cout << "\nOpcion invalida. Solo es valido un numero del 1 al 3.\n";
+            }
 
         } while (ataqueElegido < 1 || ataqueElegido > 3);
 
